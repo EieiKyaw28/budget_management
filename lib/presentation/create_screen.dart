@@ -17,6 +17,7 @@ final realmProvider = Provider<Realm>((ref) {
 final expenseProvider = StreamProvider<List<DailyExpense>>((ref) {
   final realm = ref.watch(realmProvider);
   final tasks = realm.all<DailyExpense>();
+  //
 
   // Using a StreamController to provide a stream of changes
   final controller = StreamController<List<DailyExpense>>.broadcast();
