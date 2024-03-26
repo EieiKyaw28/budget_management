@@ -1,3 +1,4 @@
+import 'package:budget_management/constant/number_formatter.dart';
 import 'package:budget_management/constant/style.dart';
 import 'package:budget_management/db/daily_expense.dart';
 import 'package:budget_management/presentation/balance_detail_page.dart';
@@ -151,50 +152,50 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Stack(children: [
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Your Balance",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Text(
-                  "\$ 37500",
+                  " ${numberFormatter("37000").toString()} Ks",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      "Remaining Balance",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      "\$ 2000",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                )
+                // Row(
+                //   children: [
+                //     Text(
+                //       "Remaining Balance",
+                //       style: TextStyle(
+                //           color: Colors.black,
+                //           fontSize: 15,
+                //           fontWeight: FontWeight.bold),
+                //     ),
+                //     SizedBox(
+                //       width: 15,
+                //     ),
+                //     Text(
+                //       "\$ 2000",
+                //       style: TextStyle(
+                //           color: Colors.black,
+                //           fontSize: 15,
+                //           fontWeight: FontWeight.bold),
+                //     ),
+                //   ],
+                // )
               ],
             ),
             // Positioned(
@@ -278,7 +279,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                "$amount Ks",
+                "${numberFormatter(amount.toString())} Ks",
                 style: const TextStyle(
                     color: Colors.black,
                     fontSize: 16,
