@@ -20,17 +20,14 @@ final expenseProvider = StreamProvider<List<DailyExpense>>((ref) {
   //
   
 
-  // Using a StreamController to provide a stream of changes
   final controller = StreamController<List<DailyExpense>>.broadcast();
 
-  // Listen for changes in the Realm database
   final subscription = tasks.changes.listen((changes) {
     final updatedTasks = tasks.toList();
     controller.add(updatedTasks);
   });
 
-  // Close the stream and cancel the subscription when the provider is disposed
-  ref.onDispose(() {
+   ref.onDispose(() {
     controller.close();
     subscription.cancel();
   });

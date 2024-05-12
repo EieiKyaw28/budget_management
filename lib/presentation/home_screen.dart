@@ -42,6 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   ];
 
   var config = Configuration.local([DailyExpense.schema]);
+  int totalAmount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +82,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
       body: expense.when(
         data: (data) {
+          for (int i = 0; i < data.length; i++) {
+            totalAmount += data[i].amount;
+          }
           return Column(
             children: [
               Padding(
@@ -92,7 +96,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           MaterialPageRoute(
                               builder: (context) => const BalanceDetailPage()));
                     },
-                    child: _balanceCard()),
+                    child: _balanceCard(totalAmount)),
               ),
               Expanded(
                 child: SingleChildScrollView(
@@ -136,7 +140,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _balanceCard() {
+  Widget _balanceCard(int totalAmount) {
     return Card(
       elevation: 4,
       child: Container(
@@ -166,7 +170,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   height: 15,
                 ),
                 Text(
-                  " ${numberFormatter("37000").toString()} Ks",
+                  " ${numberFormatter(totalAmount.toString()).toString()} Ks",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 30,

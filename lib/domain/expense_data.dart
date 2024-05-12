@@ -1,5 +1,5 @@
 class ExpenseData {
   String amount ;
-  String date;
+  int date;
   ExpenseData (this.amount , this.date);
 }
